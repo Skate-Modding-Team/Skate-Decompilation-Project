@@ -1,3 +1,5 @@
+#include "CommandManager.h"
+
 namespace Sk8 {
 
 	class CommandManager {
