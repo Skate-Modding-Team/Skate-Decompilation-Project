@@ -5,7 +5,7 @@ A decompilation of EA's Skate series.
 
 ### FINISHED:
 - Build Configuration Basic Setup
-- Pegaus
+- Pegasus Package
 
 ### TO DO:
 - Everything Else
