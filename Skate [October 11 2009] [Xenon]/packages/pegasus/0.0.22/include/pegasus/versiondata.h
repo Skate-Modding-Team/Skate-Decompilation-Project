@@ -36,7 +36,7 @@ struct tVersionData
     
     static tVersionData* Initialize(const rw::Resource& resource)
     {
-        tVersionData *versiondata = static_cast<tVersionData *>(resource.GetMemoryResource());
+        tVersionData *versiondata = (tVersionData *)(resource.GetMemoryResource());
         if ( !versiondata )
             return nullptr;
         versiondata->m_uiVersion = 0;
@@ -46,7 +46,7 @@ struct tVersionData
 
     static RwObjectType GetRwType()
     {
-        return 0xEB0008;
+        return RWOBJECTTYPE_VERSIONDATA;
     }
 
     static unsigned int GetAlignment(unsigned int numValues)

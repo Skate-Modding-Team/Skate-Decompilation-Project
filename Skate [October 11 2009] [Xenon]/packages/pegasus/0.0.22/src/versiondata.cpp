@@ -37,7 +37,7 @@ struct tVersionData
     
     static tVersionData* Initialize(const rw::Resource& resource)
     {
-        tVersionData *versiondata = static_cast<tVersionData *>(resource.GetMemoryResource());
+        tVersionData *versiondata = (tVersionData *)(resource.GetMemoryResource());
         if ( !versiondata )
             return nullptr;
         versiondata->m_uiVersion = 0;
@@ -47,7 +47,7 @@ struct tVersionData
 
     static RwObjectType GetRwType()
     {
-        return PEGASUSOBJECTTYPE_VERSIONDATA;
+        return RWOBJECTTYPE_VERSIONDATA;
     }
 
     static unsigned int GetAlignment(unsigned int numValues)
@@ -99,7 +99,7 @@ struct tVersionData
         rw::Resource* resource = 
             rw::ResourceAllocatorRegistry::GetDefaultAllocator()->Allocate(GetResourceDescriptor());
         tVersionData* version = 
-            static_cast<tVersionData *>pArena->IdToObject(
+            (tVersionData *)pArena->IdToObject(
                 pArena->AddObject(resource, GetRwType(), GetResourceDescriptor()));
         version->m_uiVersion = VERSION;
         version->m_uiRevision = REVISION;
