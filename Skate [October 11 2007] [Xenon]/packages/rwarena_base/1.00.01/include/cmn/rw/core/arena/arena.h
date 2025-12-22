@@ -1,6 +1,10 @@
+#pragma once
+
 //TODO: Figure out what includes are required from rw/core
 
 #include <rw/core/base/ostypes.h>
+
+#define rwARENA_MAGICFIELDSIZE 4
 
 namespace rw
 {
@@ -166,9 +170,9 @@ struct ArenaExportedObject
 
 struct ArenaFileHeaderMagicNumber
 {
-    uint8_t prefix[4];
-    uint8_t body[4];
-    uint8_t suffix[4];
+    uint8_t prefix[rwARENA_MAGICFIELDSIZE];
+    uint8_t body[rwARENA_MAGICFIELDSIZE];
+    uint8_t suffix[rwARENA_MAGICFIELDSIZE];
 };
 
 struct ArenaFileHeader
@@ -178,8 +182,8 @@ struct ArenaFileHeader
     uint8_t pointerSizeInBits;
     uint8_t pointerAlignment;
     uint8_t unused;
-    uint8_t majorVersion[4];
-    uint8_t minorVersion[4];
+    uint8_t majorVersion[rwARENA_MAGICFIELDSIZE];
+    uint8_t minorVersion[rwARENA_MAGICFIELDSIZE];
     uint32_t buildNo;
 
     bool IsValid() const;
